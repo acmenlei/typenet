@@ -1,0 +1,6 @@
+examples
+dist
+node_modules
+.gitignore
+.DS_store
+docs
