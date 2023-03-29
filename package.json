@@ -1,14 +1,15 @@
 {
   "name": "typeeffect",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.ts",
   "scripts": {
     "dev": "vite"
   },
-  "author": "",
+  "author": "coderlei",
   "license": "ISC",
   "devDependencies": {
     "vite": "^4.2.1"
-  }
+  },
+  "keywords": ["打字机", "网页打字", "typing"]
 }
