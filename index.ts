@@ -1,21 +1,22 @@
-import { sleep } from "./utils";
+import { createTextNode, sleep, getCurrentChildNodes, createLineFeed } from "./utils";
+import { handingText, createCursor, INSERT, REMOVE, MOVE } from "./src/heplers";
 import "./src/css/animate.css"
-// import back from "./src/api/back"
-// import start from "./src/api/start"
+
 export type TypeEffectOptions = { speed: number; }
 export type TypeEffectInstance = TypeEffect;
 
-const defaultTypeEffectOptions = { speed: 100 }, INSERT = 'INSERT', REMOVE = 'REMOVE';
+const defaultTypeEffectOptions = { speed: 100 };
 
 export default class TypeEffect {
-  root: HTMLElement | null;
-  typeContainer: HTMLElement;
-  callbacks: Array<Function> = [];
+  root: HTMLElement | null; // 根标签
+  typeContainer: HTMLElement; // 打字区域
+  callbacks: Array<Function> = []; // 处理链式调用callbacks
+  cursorPosition: number = 0; // 光标位置
 
   constructor(private el: string, private options: TypeEffectOptions = defaultTypeEffectOptions) {
     this.root = document.querySelector(el);
     if (!this.root) {
-      throw ReferenceError('please give the correct container.');
+      throw new ReferenceError('please give the correct container.');
     }
     this.typeContainer = document.createElement('div');
     this.typeContainer.className = 'type-container';
@@ -25,10 +26,11 @@ export default class TypeEffect {
   type(text: string, options?: TypeEffectOptions) {
     this.callbacks.push(async () => {
       for (let i = 0, n = text.length; i < n; i++) {
-        const textNode = document.createTextNode(text[i]);
+        const textNode = createTextNode(text[i]);
         // 使用延迟时间
         const speed = options?.speed || this.options.speed;
         await handingText(this.typeContainer, textNode, speed, INSERT);
+        this.cursorPosition++;
       }
     });
     return this;
@@ -37,10 +39,13 @@ export default class TypeEffect {
   remove(characters: number = 1, options?: TypeEffectOptions) {
     // 获取到当前的容器元素 执行删除
     this.callbacks.push(async () => {
-      let actualCharactersLength = Math.min(characters, this.typeContainer.childNodes.length);
+      // 获取当前所有子节点
+      const childNodes = getCurrentChildNodes(this.typeContainer);
+      // 能删除的节点为光标左侧的节点
+      let actualCharactersLength = Math.min(characters, this.cursorPosition);
       // 防止越界 取用户与实际字符数量的最小值
       while (actualCharactersLength--) {
-        const lastChildNode = this.typeContainer.childNodes[this.typeContainer.childNodes.length - 1];
+        const lastChildNode = childNodes[--this.cursorPosition];
         const speed = options?.speed || this.options.speed;
         await handingText(this.typeContainer, lastChildNode, speed, REMOVE);
       }
@@ -48,8 +53,41 @@ export default class TypeEffect {
     return this;
   }
 
+  move(characters: number = 1, options?: TypeEffectOptions) {
+    // 获取到当前的容器元素 执行删除
+    this.callbacks.push(async () => {
+      const childNodes = getCurrentChildNodes(this.typeContainer), direction = characters > 0 ? 'forward' : 'backward';
+      const dict = {
+        // 还剩下多少个字符可以往前 (往前移动同时不能超过字符右端点)
+        'forward': {
+          actualCharactersLength: Math.min(characters, childNodes.length - this.cursorPosition),
+          add: 1
+        },
+        // 还剩下多少个字符可以往后 (往后移动同时不能超过字符左端点)
+        'backward': {
+          actualCharactersLength: Math.min(-characters, this.cursorPosition),
+          add: -1
+        }
+      }
+      while (dict[direction].actualCharactersLength--) {
+        const siblingNode = childNodes[this.cursorPosition += dict[direction].add];
+        const speed = options?.speed || this.options.speed;
+        await handingText(this.typeContainer, siblingNode, speed, MOVE)
+      }
+    })
+    return this;
+  }
+
   sleep(time: number) {
     this.callbacks.push(async () => await sleep(time))
+    return this;
+  }
+
+  line() {
+    this.callbacks.push(async () => {
+      const br = createLineFeed();
+      this.typeContainer.insertBefore(br, this.typeContainer.childNodes[this.cursorPosition++]);
+    })
     return this;
   }
 
@@ -61,36 +99,34 @@ export default class TypeEffect {
     }
   }
 }
-// 创建光标
-function createCursor() {
-  const cursorNode = document.createElement('div');
-  cursorNode.textContent = '|';
-  cursorNode.className = 'flicker';
-  this.root?.appendChild(cursorNode);
-}
-
-function handingText(container: HTMLElement, node: Text | ChildNode, speed: number, type: string) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      switch (type) {
-        case INSERT: container.appendChild(node); break;
-        case REMOVE: container.removeChild(node); break;
-        default: break;
-      }
-      resolve(1);
-    }, speed);
-  })
-}
 
 // test
-new TypeEffect('#app', { speed: 500 })
-  .sleep(3000)
+new TypeEffect('#app', { speed: 50 })
+  .line()
+  .sleep(2000)
+  .line()
+  .sleep(1000)
+  .line()
+  .sleep(1000)
   .type('醋醋明天不用上班了')
-  .sleep(500)
-  .type('耶 又是美好的一甜', { speed: 200 })
+  .sleep(100)
+  .type('耶 又是美好的一甜', { speed: 400 })
   .sleep(500)
   .remove(1)
-  .type('天，')
+  .type('天，', { speed: 400 })
+  .sleep(300)
+  .move(-5, { speed: 400 })
   .sleep(500)
-  .type('吼吼吼吼吼吼吼吼吼吼!', { speed: 50 })
+  .remove(15, { speed: 400 })
+  .sleep(500)
+  .type('吼吼吼吼吼吼吼吼吼吼!', { speed: 80 })
+  .sleep(500)
+  .line()
+  .sleep(500)
+  .type('请问你叫什么名字!', { speed: 150 })
+  .line()
+  .sleep(500)
+  .type('我叫熊磊鑫!', { speed: 150 })
+  .sleep(500)
+  .remove(7)
   .start();

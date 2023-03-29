@@ -1,7 +1,6 @@
 .flicker {
-  font-weight: bold;
   display: inline-block;
-  animation: flicker-effect .4s alternate infinite;
+  animation: flicker-effect .3s alternate infinite;
 }
 
 .type-container {
