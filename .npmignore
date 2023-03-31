@@ -4,3 +4,6 @@ node_modules
 .gitignore
 .DS_store
 docs
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE
