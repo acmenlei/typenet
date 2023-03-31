@@ -1,4 +1,4 @@
-import { createTextNode, sleep, createLineFeed, createTextElement } from "./utils";
+import { createTextNode, sleep, createLineFeed, createTextElement } from "./utils/index";
 import { handingText, createCursor, createTypeContainer, getCurrentChildNodes } from "./src/heplers";
 import { INSERT, MOVE, REMOVE, } from "./src/heplers";
 import "./src/css/animate.css"
@@ -9,15 +9,17 @@ export type TypeEffectOptions = { speed?: number; style?: string; }
 export const defaultTypeEffectOptions = { speed: 100 };
 
 export default class TypeEffect {
-  root: HTMLElement | null; // 根标签
+  // @ts-ignore;
   typeContainer: HTMLElement; // 打字区域
+  root: HTMLElement | null; // 根标签
   callbacks: Array<Function> = []; // 处理链式调用callbacks
   cursorPosition: number = 0; // 光标位置
 
   constructor(private el: string, public options: TypeEffectOptions = defaultTypeEffectOptions) {
     this.root = document.querySelector(el);
     if (!this.root) {
-      throw new ReferenceError('please give the correct container.');
+      console.error('please give the correct container.');
+      return;
     }
   }
 
@@ -95,25 +97,3 @@ export default class TypeEffect {
     for (const cb of this.callbacks) await cb.apply(this); // 处理内容callbacks
   }
 }
-
-new TypeEffect('#app', { speed: 100, style: 'font-size: 20px; font-weight: bold;' })
-  .type('醋醋明天不用上班了', { style: 'color: red;' })
-  .sleep(100)
-  .type('耶 又是美好的一甜，', { style: 'color: skyblue;' })
-  .sleep(500)
-  .remove(2)
-  .type('天，')
-  .sleep(300)
-  .move(-5)
-  .sleep(500)
-  .type('吼吼吼吼吼吼吼吼吼吼!', { speed: 80 })
-  .sleep(500)
-  .line()
-  .sleep(500)
-  .type('请问你叫什么名字!', { speed: 150 })
-  .line()
-  .sleep(500)
-  .type('我叫熊磊鑫!', { speed: 150 })
-  .sleep(500)
-  .remove(7)
-  .start();

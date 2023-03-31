@@ -1,4 +1,4 @@
-import { type TypeEffectInstance } from "..";
+import { type TypeEffectInstance } from "../index";
 export const INSERT = 'INSERT', REMOVE = 'REMOVE', MOVE = 'MOVE';
 
 type TextNode = Text | ChildNode;
@@ -44,7 +44,7 @@ export function createTypeContainer(typeInstance: TypeEffectInstance) {
 }
 // 获取当前文本
 export function getCurrentChildNodes(root: HTMLElement) {
-  const nodes = root.childNodes, childNodes: ChildNode[] = [];
+  const nodes = Array.from(root.childNodes), childNodes: ChildNode[] = [];
   for (const node of nodes) {
     if (node.nodeType === 3 || (node.nodeType == 1 && (node as HTMLElement).className != 'flicker')) {
       childNodes.push(node);

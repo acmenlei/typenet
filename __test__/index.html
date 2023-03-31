@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/dev/type-effect.esm.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import TypeEffect from "../dist/dev/type-effect.esm.js"
+
+    new TypeEffect('#app', { speed: 100, style: 'font-size: 20px; font-weight: bold;' })
+      .type('醋醋明天不用上班了', { style: 'color: red;' })
+      .sleep(100)
+      .type('耶 又是美好的一甜，', { style: 'color: skyblue;' })
+      .sleep(500)
+      .remove(2)
+      .type('天，')
+      .sleep(300)
+      .move(-5)
+      .sleep(500)
+      .type('吼吼吼吼吼吼吼吼吼吼!', { speed: 80 })
+      .sleep(500)
+      .line()
+      .sleep(500)
+      .type('请问你叫什么名字!', { speed: 150 })
+      .line()
+      .sleep(500)
+      .type('我叫熊磊鑫!', { speed: 150 })
+      .sleep(500)
+      .remove(7)
+      .start();
+  </script>
+</body>
+
+</html>

@@ -1,15 +1,33 @@
 {
-  "name": "typeeffect",
-  "version": "1.0.1",
-  "description": "",
+  "name": "type-effect",
+  "version": "1.0.2",
+  "description": "web typing effect.",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
-    "dev": "vite"
+    "build": "rollup -c",
+    "test": "vitest"
   },
-  "author": "coderlei",
+  "author": "coderlei <coderleilei@163.com> (https://github.com/acmenlei)",
+  "repository": "git@github.com:Acmenlei/type-effect.git",
+  "bugs": {
+    "url": "https://github.com/acmenlei/type-effect/issues"
+  },
   "license": "ISC",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^3.20.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1"
   },
-  "keywords": ["打字机", "网页打字", "typing"]
+  "keywords": [
+    "打字机",
+    "网页打字",
+    "typing"
+  ]
 }
