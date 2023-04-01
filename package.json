@@ -1,17 +1,17 @@
 {
-  "name": "type-effect",
-  "version": "1.0.2",
+  "name": "typenet",
+  "version": "1.0.3",
   "description": "web typing effect.",
   "main": "index.ts",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "test": "vitest"
+    "test": "vite"
   },
   "author": "coderlei <coderleilei@163.com> (https://github.com/acmenlei)",
-  "repository": "git@github.com:Acmenlei/type-effect.git",
+  "repository": "git@github.com:Acmenlei/typenet.git",
   "bugs": {
-    "url": "https://github.com/acmenlei/type-effect/issues"
+    "url": "https://github.com/acmenlei/typenet/issues"
   },
   "license": "ISC",
   "devDependencies": {
@@ -28,6 +28,8 @@
   "keywords": [
     "打字机",
     "网页打字",
-    "typing"
+    "typing",
+    "typer",
+    "writer"
   ]
 }
