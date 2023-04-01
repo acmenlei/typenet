@@ -3,15 +3,15 @@
 实现web打字机效果，使用简单方便.
 ## 使用
 ### 下载
-#### 使用npm
+#### npm
 ```shell
 npm install typenet
 ```
-#### 使用pnpm
+#### pnpm
 ```shell
 pnpm install typenet
 ```
-#### 使用yarn
+#### yarn
 ```shell
 yarn add typenet
 ```
@@ -29,11 +29,15 @@ new Typenet('#app', [options])
 .type(' plugin.')
 .start();
 ```
-
+### options参数介绍
+| property name        | type    | default value | meaning |
+| -------------------- | ------- | ------------- | ------- |
+|  speed   |  number   | 100 | 单位为毫秒，用于控制文本的速度，如打字速度、移动速度等. |
+| style | string | none | 编写格式与 DOM 元素中的style写法保持一致 |
 ### API介绍
-在`构造函数(Typenet)`中配置的`options`将被视为公共的，若调用`API`时不传入`options`那么将使用构造函数中的哦`options`，最后请调用`start`方法启动整个流程. 目前支持 `remove`、`type`、`sleep`、`start`、`move`、`line` 等方法的链式调用，持续维护...
+在`构造函数(Typenet)`中配置的`options`将被视为公共的，若调用`API`时不传入`options`那么将使用构造函数中的`options`. 最后请调用`start`方法启动整个流程. 目前支持 `remove`、`type`、`sleep`、`start`、`move`、`line` 等方法的链式调用，持续维护...
 #### type
-输出文字，`type(text: string, [options])`.
+输出文字，`type(text: string, [options])`
 ```ts
 new Typenet('#app', [options])
 .type('i am typenet!')
