@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "test": "vite"
+    "test": "vite",
+    "lint": "eslint src --ext .js,.ts --fix"
   },
   "author": "coderlei <coderleilei@163.com> (https://github.com/acmenlei)",
   "repository": "git@github.com:Acmenlei/typenet.git",
@@ -17,10 +18,16 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.7",
     "rollup": "^3.20.2",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.5.0",
     "typescript": "^5.0.3",
     "vite": "^4.2.1"

@@ -104,8 +104,9 @@ class TypeEffect {
     constructor(el, options = defaultTypeEffectOptions) {
         this.el = el;
         this.options = options;
+        this.typeContainer = document.body; // 打字区域 初始化为body
         this.callbacks = []; // 处理链式调用callbacks
-        this.cursorPosition = 0; // 光标位置
+        this.cursorPosition = 0;
         this.root = document.querySelector(el);
         if (!this.root) {
             console.error('please give the correct container.');

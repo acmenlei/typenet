@@ -1,32 +1,43 @@
 import resolve from "@rollup/plugin-node-resolve"
-import typescript from "@rollup/plugin-typescript";
-import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "rollup-plugin-terser";
+import typescript from "@rollup/plugin-typescript"
+import commonjs from "@rollup/plugin-commonjs"
+import terser from "@rollup/plugin-terser"
 import postcss from "rollup-plugin-postcss"
 
 export default [
   {
-    input: './index.ts',
+    input: "./index.ts",
     output: {
-      dir: 'dist/dev',
+      dir: "dist/dev",
       format: "esm",
-      entryFileNames: 'type-effect.esm.js'
+      entryFileNames: "type-effect.esm.js",
     },
-    plugins: [resolve(), commonjs(), typescript(), postcss({
-      extract: true,
-      minimize: false
-    })]
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript(),
+      postcss({
+        extract: true,
+        minimize: false,
+      }),
+    ],
   },
   {
-    input: './index.ts',
+    input: "./index.ts",
     output: {
-      dir: 'dist/prod',
+      dir: "dist/prod",
       format: "esm",
-      entryFileNames: 'type-effect.prod.esm.js'
+      entryFileNames: "type-effect.prod.esm.js",
     },
-    plugins: [resolve(), commonjs(), typescript(), terser(), postcss({
-      extract: true,
-      minimize: true
-    })]
-  }
-]; 
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript(),
+      terser(),
+      postcss({
+        extract: true,
+        minimize: true,
+      }),
+    ],
+  },
+]
