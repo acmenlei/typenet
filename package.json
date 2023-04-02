@@ -9,6 +9,9 @@
     "test": "vite",
     "lint": "eslint src --ext .js,.ts --fix"
   },
+  "lint-staged": {
+    "*.{ts,js}": ["pnpm lint"]
+  },
   "author": "coderlei <coderleilei@163.com> (https://github.com/acmenlei)",
   "repository": "git@github.com:Acmenlei/typenet.git",
   "bugs": {
@@ -25,6 +28,8 @@
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "rollup": "^3.20.2",
     "rollup-plugin-postcss": "^4.0.2",
