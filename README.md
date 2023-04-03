@@ -1,6 +1,6 @@
 # typenet
 ## 介绍
-实现web打字机效果，使用简单方便.
+实现web打字机效果，支持链式调用，使用简单方便.
 ## 使用
 ### 下载
 #### npm
@@ -93,11 +93,11 @@ todo...
 <div style="display: flex; gap: 20px;">
 	<div style="text-align: center">
 		<p>WeChat</p>
-		<img style="max-width: 165px" src="./docs/wechat.jpg" alt="微信" />
+		<img style="width: 165px; height: 165px" src="./docs/wechat.jpg" alt="微信" />
 	</div>
 	<div style="text-align: center">
 		<p>Alipay</p>
-		<img style="max-width: 150px" src="./docs/alipay.jpg" alt="支付宝" />
+		<img style="width: 165px; height: 165px" src="./docs/alipay.jpg" alt="支付宝" />
 	</div>
 </div>
 
