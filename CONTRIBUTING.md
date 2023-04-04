@@ -40,7 +40,6 @@ Commit messages 请遵循[conventional-changelog 标准](https://www.conventiona
 - test: 单元测试
 - chore: 其他不修改 src 或测试文件的提交
 
-
 ## License
 
 [MIT](./license)

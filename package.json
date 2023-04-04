@@ -7,10 +7,13 @@
   "scripts": {
     "build": "rollup -c",
     "test": "vite",
-    "lint": "eslint src --ext .js,.ts --fix"
+    "lint": "eslint src --ext .js,.ts --fix",
+    "push": "sh ./.shell/push.sh"
   },
   "lint-staged": {
-    "*.{ts,js}": ["pnpm lint"]
+    "*.{ts,js}": [
+      "pnpm lint"
+    ]
   },
   "author": "coderlei <coderleilei@163.com> (https://github.com/acmenlei)",
   "repository": "git@github.com:Acmenlei/typenet.git",
