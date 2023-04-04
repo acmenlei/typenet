@@ -1,9 +1,9 @@
 examples
-dist
 node_modules
 .gitignore
 .DS_store
 docs
+dist/dev
 CHANGELOG.md
 CONTRIBUTING.md
 LICENSE

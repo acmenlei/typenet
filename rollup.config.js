@@ -10,7 +10,7 @@ export default [
     output: {
       dir: "dist/dev",
       format: "esm",
-      entryFileNames: "type-effect.esm.js",
+      entryFileNames: "typenet.esm.js",
     },
     plugins: [
       resolve(),
@@ -27,7 +27,7 @@ export default [
     output: {
       dir: "dist/prod",
       format: "esm",
-      entryFileNames: "type-effect.prod.esm.js",
+      entryFileNames: "typenet.esm.js",
     },
     plugins: [
       resolve(),
