@@ -7,7 +7,7 @@
 
 ## Introduction
 
-web typewriter effect, support chain call, easy to use. You can check out the [online demo](http://acmenlei.github.io/typenet/docs) for details.
+web typewriter effect, support chain call, easy to use. You can check out the [online demo](http://acmenlei.github.io/typenet) for details.
 
 ## Use
 

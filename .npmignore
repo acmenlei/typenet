@@ -2,6 +2,8 @@ examples
 node_modules
 .gitignore
 .DS_store
+.husky
+.shell
 docs
 dist/dev
 CHANGELOG.md

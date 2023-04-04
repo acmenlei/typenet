@@ -7,7 +7,7 @@
 
 ## 介绍
 
-实现 web 打字机效果，支持链式调用，使用简单方便，详情你可以查看[在线演示](http://acmenlei.github.io/typenet/docs).
+实现 web 打字机效果，支持链式调用，使用简单方便，详情你可以查看[在线演示](http://acmenlei.github.io/typenet).
 
 ## 使用
 
