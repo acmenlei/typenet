@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/dev/type-effect.esm.css">
+  <title>Typenet online demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    html {
+      background: #555;
+    }
+
+    #app {
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module">
+    import Typenet from "../dist/dev/type-effect.esm.js"
+    function print() {
+      console.log('代码内容')
+    }
+    new Typenet('#app', { speed: 50, style: 'color: #e0dede; line-height: 30px' })
+      .type('Typenet Demo 在线演示', { style: 'font-size: 26px; fontweight: bold; color: #ccc;' })
+      .line()
+      .line()
+      .type('您好，我是typenet，我是一个打字插件，我拥有')
+      .type('type', { style: 'font-weight: bold; color: skyblue' })
+      .type('、')
+      .type('remove', { style: 'font-weight: bold; color: skyblue' })
+      .type('、')
+      .type('move', { style: 'font-weight: bold; color: skyblue' })
+      .type('、')
+      .type('sleep', { style: 'font-weight: bold; color: skyblue' })
+      .type('、')
+      .type('line', { style: 'font-weight: bold; color: skyblue' })
+      .type(' 五种方法的链式调用，下面我将给您演示它的各种用法！')
+      .line()
+      .line()
+      .type('1. 首先我将给您演示一下最基本的输出功能，下面我将输出一段代码：', { style: 'color: #999' })
+      .line()
+      .type('fucntion ', { style: 'color: deeppink' })
+      .type('print', { style: 'color: lightgreen' })
+      .type(' () ')
+      .type('{')
+      .line()
+      .type(' ', { style: 'margin-left: 10px' })
+      .type('console', { style: 'color: yellow;' })
+      .type('.')
+      .type('log', { style: 'color: lightgreen' })
+      .type('(')
+      .type(`'这段函数的作用是输出~'`, { style: 'color: orange' })
+      .type(')')
+      .type(';')
+      .line()
+      .type('}')
+      .line()
+      .line()
+      .type('2. 下面我将给您演示一下最基本的暂停 + 删除功能，下面我将输出一段文字并停留3秒后删除：', { style: 'color: #999' })
+      .line()
+      .type('我将在3秒后被删除掉!')
+      .sleep(3000)
+      .remove(11)
+      .type('ok，这样一个删除 + 暂停的效果就演示完毕了，我们接着看下面的内容吧～')
+      .line()
+      .line()
+      .type('3. 下面我将给您演示一下暂停 + 移动光标 + 删除功能：', { style: 'color: #999' })
+      .line()
+      .type('我将输出一段cuowu的文字，然后移动光标删除!')
+      .move(-13, { speed: 100 })
+      .remove(5, { speed: 70 })
+      .type('错误')
+      .move(13, { speed: 100 })
+      .line()
+      .type('...')
+      .line()
+      .line()
+      .line()
+      .line()
+      .line()
+      .line()
+      .line()
+      .type('over: ', { style: 'color: pink; font-weight: bold;' })
+      .type('功能就演示到这里了，更多效果可以自己尝试，如果你有更好的提议欢迎给项目贡献代码～')
+      .line()
+      .type('author: ', { style: 'color: pink; font-weight: bold;' })
+      .type('@coderlei')
+      .line()
+      .type('repo: ', { style: 'color: pink; font-weight: bold;' })
+      .type('https://github/acmenlei/typenet')
+      .start()
+
+  </script>
+</body>
+
+</html>
