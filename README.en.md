@@ -51,16 +51,16 @@ new Typenet("#app", [options])
 
 | property name | type   | default value | meaning                                                                                                      |
 | ------------- | ------ | ------------- | ------------------------------------------------------------------------------------------------------------ |
-| speed         | number |               | units for 100 milliseconds, is used to control the speed of text, such as typing speed, movement speed, etc. |
+| speed         | number |      100      | units for 100 milliseconds, is used to control the speed of text, such as typing speed, movement speed, etc. |
 | style         | string | none          | writing format and style of DOM elements consistent writing                                                  |
 
 ### API introduction
 
-options configured in the constructor (Typenet) will be considered public, and options in the constructor will be used if the API is called without options. Finally, call the 'start' method to start the whole process. Currently support 'remove', 'type', 'sleep', 'start', 'move', 'line' and other methods of chain call, continuous maintenance...
+options configured in the constructor (Typenet) will be considered public, and options in the constructor will be used if the API is called without options. Finally, call the `start` method to start the whole process. Currently support `remove`, `type`, `sleep`, `start`, `move`, `line` and other methods of chain call, continuous maintenance...
 
 #### type
 
-Print the text, 'type(text: string, [options])'
+Print the text, `type(text: string, [options])`
 
 ```ts
 new Typenet("#app", [options]).type("i am typenet! ").start()
@@ -68,7 +68,7 @@ new Typenet("#app", [options]).type("i am typenet! ").start()
 
 #### remove
 
-remove(characters: number, [options]) '
+Delete characters,`remove(characters: number, [options])`
 
 ```ts
 new Typenet("#app", [options])
@@ -79,7 +79,7 @@ new Typenet("#app", [options])
 
 #### move
 
-move(characters: number, [options]), 'move(characters: number, [options])', 'characters' can be positive (move to the right) and negative (move to the left).
+Move the cursor, `move(characters: number, [options])`, `characters` can be positive (move to the right) and negative (move to the left).
 
 ```ts
 new Typenet("#app", [options]).type("i am typenet! ").move(5).start()
@@ -87,7 +87,7 @@ new Typenet("#app", [options]).type("i am typenet! ").move(5).start()
 
 #### sleep
 
-To stop printing text, 'sleep(time: number)' takes milliseconds.
+To stop printing text, `sleep(time: number)` takes milliseconds.
 
 ```ts
 new Typenet("#app", [options])
@@ -98,7 +98,7 @@ new Typenet("#app", [options])
 
 #### line
 
-line feed, 'line()'.
+line feed, `line()`.
 
 ```ts
 new Typenet("#app", [options])
