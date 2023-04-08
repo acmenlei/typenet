@@ -13,11 +13,11 @@ import {
 import { INSERT, MOVE, REMOVE } from "./src/heplers"
 import "./src/css/animate.css"
 
-export type TypeEffectInstance = TypeEffect
-export type TypeEffectOptions = { speed?: number; style?: string }
+export type TypeNetInstance = TypeEffect
+export type TypeNetOptions = { speed?: number; style?: string }
 export type Callback = () => void
 
-export const defaultTypeEffectOptions = { speed: 100 }
+export const defaultTypeNetOptions = { speed: 100 }
 
 export default class TypeEffect {
   typeContainer: HTMLElement = document.body // 打字区域 初始化为body
@@ -27,7 +27,7 @@ export default class TypeEffect {
 
   constructor(
     private el: string,
-    public options: TypeEffectOptions = defaultTypeEffectOptions
+    public options: TypeNetOptions = defaultTypeNetOptions
   ) {
     this.root = document.querySelector(el)
     if (!this.root) {
@@ -36,7 +36,7 @@ export default class TypeEffect {
     }
   }
 
-  type(text: string, options?: TypeEffectOptions) {
+  type(text: string, options?: TypeNetOptions) {
     this.callbacks.push(async () => {
       for (let i = 0, n = text.length; i < n; i++) {
         const textNode = options?.style
@@ -51,7 +51,7 @@ export default class TypeEffect {
     return this
   }
 
-  remove(characters = 1, options?: TypeEffectOptions) {
+  remove(characters = 1, options?: TypeNetOptions) {
     // 获取到当前的容器元素 执行删除
     this.callbacks.push(async () => {
       // 获取当前所有子节点
@@ -68,7 +68,7 @@ export default class TypeEffect {
     return this
   }
 
-  move(characters = 1, options?: TypeEffectOptions) {
+  move(characters = 1, options?: TypeNetOptions) {
     // 获取到当前的容器元素 执行删除
     this.callbacks.push(async () => {
       const childNodes = getCurrentChildNodes(this.typeContainer),
@@ -112,6 +112,14 @@ export default class TypeEffect {
     })
     return this
   }
+
+  // code(codeSnippet: string, options?: TypeNetOptions) {
+  //   // 默认将代码解析成JS
+  //   this.callbacks.push(async () => {
+  //     console.log(codeSnippet, options)
+  //   })
+  //   return this
+  // }
 
   async start() {
     createTypeContainer(this)

@@ -1,4 +1,4 @@
-import { type TypeEffectInstance } from "../index"
+import { type TypeNetInstance } from "../index"
 export const INSERT = "INSERT",
   REMOVE = "REMOVE",
   MOVE = "MOVE"
@@ -7,7 +7,7 @@ type TextNode = Text | ChildNode
 type Speed = number | undefined
 
 // 创建光标
-export function createCursor(typeInstance: TypeEffectInstance) {
+export function createCursor(typeInstance: TypeNetInstance) {
   const cursorNode = document.createElement("div")
   cursorNode.textContent = "|"
   cursorNode.className = "flicker"
@@ -24,7 +24,7 @@ function move(node: TextNode, container: HTMLElement) {
   container.insertBefore(cursor, node)
 }
 // 创建打字容器
-export function createTypeContainer(typeInstance: TypeEffectInstance) {
+export function createTypeContainer(typeInstance: TypeNetInstance) {
   const container = (typeInstance.typeContainer = document.createElement("div"))
   container.className = "type-container"
   container.style.cssText = typeInstance.options.style || ""
