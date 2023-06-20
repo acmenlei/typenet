@@ -109,10 +109,6 @@ new Typenet("#app", [options])
   .start()
 ```
 
-## 演示 Demo
-
-todo...
-
 ## 常见问题
 
 todo...
